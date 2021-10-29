@@ -41,10 +41,14 @@ public class Home extends AppCompatActivity {
                 String filler2;
                 filler2 = percent.getText().toString();
                 filler = amount.getText().toString();
-                int p =Integer.parseInt(filler);
-                int r = Integer.parseInt(filler2);
+                double p =Double.parseDouble(filler);
+                double r = Double.parseDouble(filler2);
                 //EMI = p × r × (1 + r)n/((1 + r)n - 1)
-                listItems.add("3 Months"+((p * r * (1 + r)*3)/(((1 + r)*3) - 1)));
+                r = r / 100; // one month interest
+//                t = t * 12; // one month period
+//                emi = (p * r * (float)Math.pow(1 + r, t))
+//                        / (float)(Math.pow(1 + r, t) - 1);
+                listItems.add("3 Months "+(p * r * (float)Math.pow(1 + r, 3)) / (float)(Math.pow(1 + r, 3) - 1));
 //                listItems.add("6 Months"+((numamount*numpercent*(1+numpercent)*6)/((1+numpercent)*6-1)));
 //                listItems.add("9 Months"+((numamount*numpercent*(1+numpercent)*9)/((1+numpercent)*9-1)));
 //                listItems.add("12 Months"+((numamount*numpercent*(1+numpercent)*12)/((1+numpercent)*12-1)));
@@ -53,11 +57,6 @@ public class Home extends AppCompatActivity {
 
                 l.setAdapter(arr);
 
-//                i1.setText(Integer.toString((numamount+(numamount*numpercent/100))/3) + " per month");
-//                i2.setText(Integer.toString((numamount+(numamount*numpercent/100))/6)+ " per month");
-//                i3.setText(Integer.toString((numamount+(numamount*numpercent/100))/9)+ " per month");
-//                i4.setText(Integer.toString((numamount+(numamount*numpercent/100))/12)+" per month");
-//                i5.setText(Integer.toString((numamount+(numamount*numpercent/100))/18)+" per month");
 
             }
         });
